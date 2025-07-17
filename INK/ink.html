@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INK Album | Fanaa’s Artfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Custom fadeInUp animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .top-icons {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .download-btn, .close {
+      font-size: 16px;
+      color: white;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .download-btn:hover, .close:hover {
+      background: white;
+      color: black;
+    }
+
+    .gallery-image {
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.02);
+    }
+
+    .overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .image-wrapper:hover .overlay-text {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center p-6">
+    <div class="flex items-center space-x-2">
+      <span class="text-2xl">✦</span>
+      <span class="text-lg font-semibold">ARTFOLIO</span>
+    </div>
+    <nav class="flex items-center space-x-6">
+        <button onclick="history.back()"><a href="index.html">Back to Homepage</a></button>
+
+    </nav>
+  </header>
+
+  <!-- Title -->
+  <div class="text-center my-6 animate-fadeInUp">
+    <h1 class="text-4xl font-bold mb-2">THE INK FLOW</h1>
+    <p class="text-sm text-gray-300">Medium: Ink on Paper | Series of expressive sketches</p>
+  </div>
+
+  <!-- Gallery -->
+
+  <br>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 px-6 pb-10">
+  <!-- Example image blocks -->
+  <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 overflow-hidden">
+    <img src="1.jpg" alt="Artwork 1" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">The Watchful Silence</div>
+  </div>
+
+ <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 overflow-hidden">
+    <img src="5.jpg" alt="Artwork 2" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Victory’s Solitude</div>
+  </div>
+
+  <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 overflow-hidden">
+    <img src="4.jpg" alt="Artwork 3" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Crimson Reflection</div>
+  </div>
+
+   <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 overflow-hidden">
+    <img src="6.jpg" alt="Artwork 4" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Unspoken Words</div>
+  </div>
+
+   <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 w-100 overflow-hidden">
+    <img src="2.jpg" alt="Artwork 5" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Through the Flame</div>
+  </div>
+
+
+   <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 w-100 overflow-hidden">
+    <img src="12.jpg" alt="Artwork 6" class="w-full h-auto object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Whispers of Her Mind</div>
+  </div>
+
+
+   <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 w-full overflow-hidden">
+    <img src="3.jpg" alt="Artwork 7" class="w-full h-full object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Violet Vision</div>
+  </div>
+
+  <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 w-100 overflow-hidden">
+    <img src="9.jpg" alt="Artwork 8" class="w-full h-auto object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Purr-sonality Overload</div>
+  </div>
+
+  <div class="relative image-wrapper cursor-pointer animate-fadeInUp h-80 w-100 overflow-hidden">
+    <img src="8.jpg" alt="Artwork 9" class="w-full h-auto object-cover gallery-image modal-trigger" />
+    <div class="overlay-text">Stare Unfiltered</div>
+  </div>
+
+  <!-- Add more as needed, keeping h-80 or change as per style -->
+</div>
+
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="top-icons">
+      <a id="downloadBtn" class="download-btn" download>Download</a>
+      <span class="close" onclick="closeModal()">&times; Close</span>
+    </div>
+    <img id="modalImage" class="modal-content">
+  </div>
+
+  <!-- Script -->
+  <script>
+    window.onload = function () {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      const downloadBtn = document.getElementById("downloadBtn");
+      const triggers = document.querySelectorAll(".modal-trigger");
+
+      triggers.forEach(img => {
+        img.onclick = function () {
+          modal.style.display = "flex";
+          modalImg.src = this.src;
+          downloadBtn.href = this.src;
+        };
+      });
+
+      window.closeModal = function () {
+        modal.style.display = "none";
+      };
+
+      modal.onclick = function(event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    };
+  </script>
+</body>
+</html>

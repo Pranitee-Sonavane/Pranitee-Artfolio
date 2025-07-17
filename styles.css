@@ -1,0 +1,567 @@
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+  }
+  
+  .animate-slide-up {
+  animation: slideUp 1s ease-out forwards;
+  }
+  
+  .delay-1 {
+  animation-delay: 0.5s;
+  }
+  
+  * {
+  
+  padding: 0;
+  box-sizing: border-box;
+  }
+  
+  .flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  font-family: 'Oswald', sans-serif;
+  }
+  
+  .title {
+  font-size: 1.2em;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 20px;
+  }
+  
+  .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  }
+  
+  
+  
+  .flip-card-front {
+  background-color: #fff0e6;
+  color: coral;
+  }
+  
+  .flip-card-back {
+  background-color: coral;
+  color: white;
+  transform: rotateY(180deg);
+  }
+  
+  /* Container for the grid of cards */
+  #card-container {
+  display: flex;
+  padding:50px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+  }
+  
+  /* Individual card styling */
+  .card {
+  display: flex;
+  flex-direction: column;
+  background-color: #242824;
+  padding: 10px;
+  border-radius: 6px;
+  height: max-content;
+  width: 48%; /* Set each card width to 48% of the container width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px; /* Add space between rows */
+  margin-top: 50px;
+  padding-bottom: 2%;
+  
+  }
+  
+  /* The card header styling */
+  .card_form {
+  position: relative;
+  width: 100%;
+  height: 30em;
+  border-radius: 4px;
+  background-color: #9147ff;
+  transition: 0.2s ease-in-out;
+  overflow: hidden;
+  }
+  
+  /* The text inside the header */
+  .card_form span {
+  font-size: 1.5em;
+  position: absolute;
+  inset: 0;
+  padding: 5px 10px;
+  color: #fff;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  }
+  
+  /* Hover effect for the card */
+  .card:hover .card_form span,
+  .card:hover .card_data span {
+  opacity: 1;
+  }
+  
+  /* Card data area */
+  .card_data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  
+  .card_data span {
+  color: #9147ff;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+  }
+  
+  .card_data span:hover {
+  text-decoration: underline;
+  }
+  
+  /* Styling for the text block */
+  .text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: larger;
+  }
+  
+  .text_m {
+  font-size: 1.3em;
+  }
+  
+  .text_s {
+  color: #9147ff;
+  font-size: 0.8em;
+  }
+  
+  /* Cube styling for rotation effect */
+  .cube {
+  width: max-content;
+  height: 10px;
+  transition: all 0.2s;
+  transform-style: preserve-3d;
+  }
+  
+  .card:hover .cube {
+  transform: rotateX(90deg);
+  }
+  
+  /* Cube side styling */
+  .side {
+  width: max-content;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+        padding-top: 9%;
+        padding-top: 5%;
+  }
+  
+  /* Specific side transformations */
+  .top {
+  transform: rotateX(-90deg) translate3d(0, 0, 0em);
+  }
+  
+  .front {
+  transform: translate3d(0, 0, 1em);
+  }
+  
+  /* Styles for the divider image container */
+  .divider-container {
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top */
+    height: 90vh; /* Occupy full viewport height when sticky */
+    width: 100%; /* Use 100% width */
+    line-height: 0; /* Prevent extra space */
+    z-index: 1; /* Below the content that scrolls over */
+  }
+  
+  /* Styles for the image inside the divider */
+  #divider-image-inner {
+    display: block; /* Use block layout */
+    width: calc(100% - 2cm); /* Take full width minus 1cm gap on left and right */
+    height: 100%; /* Fill container height */
+    object-fit: cover; /* Cover the area, maintain aspect ratio */
+    transform-origin: center center; /* Scale from the center */
+    transition: transform 0.5s ease-out; /* Smooth transition for zoom */
+    mix-blend-mode: screen;
+    background-color: #0a0a0a;
+    transform: scale(1.05); /* Set initial scale */
+    margin-left: 1cm; /* Leave 1cm gap on the left */
+    margin-right: 1cm; /* Leave 1cm gap on the right */
+    border-radius: 15px; /* Round the corners */
+  }
+  
+
+/* Content Below Divider */
+#content-below-divider {
+  position: relative; /* Needed for z-index stacking */
+  z-index: 2; /* Above the sticky divider */
+  background-color: black; /* This hides the image as it scrolls over */
+  /* padding-top: 1px; /* May not be needed now */
+}
+
+/* Adjust card container margin */
+#card-container {
+  display: flex;
+  padding: 0 100px; /* Keep padding */
+  flex-wrap: wrap;
+  justify-content: space-between; /* Use space-around or space-evenly for better spacing */
+  width: 100%;
+  /* margin-top: 40px; /* Adjust or remove as needed based on visual */
+}
+
+/* Responsive adjustments for cards */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Stack cards on smaller screens */
+    margin-bottom: 40px; /* Add more space between stacked cards */
+  }
+  #card-container {
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+  /* Target the h1 elements inside the hero section */
+  section.text-center h1 {
+    font-size: 80px !important; /* Example smaller size, use !important to override Tailwind potentially */
+    line-height: 1 !important; /* Adjust line-height accordingly */
+  }
+}
+
+/* Carousel Styles */
+.carousel-container {
+  /* Enable horizontal scrolling */
+  overflow-x: auto;
+  /* Hide scrollbar for a cleaner look (optional, browser-dependent) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-track {
+   
+  /* Ensure items stay in a single row */
+  display: flex;
+  /* Add some padding at the start and end if needed */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 80rem; 
+}
+
+.carousel-image {
+  width: 16rem;
+  height: 24rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+
+.carousel-image:not(:last-child) {
+  margin-right: 1rem; 
+}
+
+.carousel-image:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Introduction Animation (using Animate.css class added in HTML) */
+/* No extra CSS needed if Animate.css is linked correctly */
+
+/* About Section Styling (mostly handled by Tailwind) */
+#about {
+  /* Add any specific overrides or additions here if needed */
+}
+
+/* Enhanced Introduction Styles */
+.intro-heading {
+  font-family: 'Playfair Display', serif; /* Apply elegant serif font */
+  font-weight: 700; /* Bold weight */
+  color: #e0e0e0; /* Slightly off-white for softer look */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  margin-bottom: 2rem; /* Increase space below heading (Tailwind mb-8 is 2rem) */
+}
+
+.intro-text {
+  font-family: 'Lato', sans-serif; /* Apply clean sans-serif font */
+  font-weight: 400; /* Regular weight */
+  line-height: 1.8; /* Improve readability */
+  color: #cccccc; /* Lighter gray than default text-gray-300 */
+  white-space: pre-line; /* Preserve line breaks from HTML */
+}
+
+.slider {
+  width: 100%;
+  height: var(--height);
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+}
+.slider .list {
+  display: flex;
+  width: 100%;
+  min-width: calc(var(--width) * var(--quantity));
+  position: relative;
+}
+.slider .list .item {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  left: 100%;
+  animation: autoRun 10s linear infinite;
+  transition: filter 0.9s;
+  animation-delay: calc(
+    (10s / var(--quantity)) * (var(--position) - 1) - 10s
+  ) !important;
+}
+.slider .list .item img {
+  width: 100%;
+  height: 100%; /* Ensure image fills the item height */
+  object-fit: cover; /* Cover the area, maintain aspect ratio */
+  border-radius: 9px; /* Optional: Add rounded corners like the cards had */
+}
+@keyframes autoRun {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(var(--width) * -1);
+  }
+}
+.slider:hover .item {
+  animation-play-state: paused !important;
+  filter: grayscale(1);
+}
+.slider .item:hover {
+  filter: grayscale(0);
+}
+.slider[reverse="true"] .item {
+  animation: reversePlay 8s linear infinite;
+}
+@keyframes reversePlay {
+  from {
+    left: calc(var(--width) * -1);
+  }
+  to {
+    left: 100%;
+  }
+}
+.slider .item:hover {
+  filter: grayscale(0);
+}
+.slider[reverse="true"] .item {
+  animation: reversePlay 10s linear infinite;
+}
+@keyframes reversePlay {
+  from {
+    left: calc(var(--width) * -1);
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.vintage-heading {
+    /* Choose your font-family */
+    font-family: 'Playfair Display', serif; /* Or 'Fraunces', serif; */
+    font-weight: 900; /* For a bolder look, you can adjust this (e.g., 700) */
+    font-size: 3.5em; /* Adjust as needed for impact */
+    color: #aeacac; /* A sophisticated dark color, adjust to your palette */
+    text-align: center; /* Centers the text horizontally */
+    margin-top: 50px; /* Example margin to push it down from the top */
+    margin-bottom: 5px; /* Example margin for spacing below */
+    margin-right: 30px; 
+    line-height: 1.2; /* Adjust line height for better readability with large fonts */
+    /* Optional: Add a subtle text-shadow for a more vintage, embossed effect */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+
+}
+
+.fancy-line {
+  height: 2px;
+  width: 60%;
+  background-color: #917f77;
+  margin: 20px auto;
+}
+
+a.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+ .menu-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #1f2937; /* Tailwind gray-800 */
+  width: 220px;
+  padding: 1.5rem;
+  transform: translateX(100%);  /* hidden to the left */
+  transition: transform 0.3s ease-in-out;
+  z-index: 50;
+}
+
+.menu-container.open {
+  transform: translateX(0);  /* slide into view */
+}
+
+    .menu-container ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-container ul li {
+      margin: 0.75rem 0;
+    }
+
+    .menu-container a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-container a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+  list-style: none;
+}
+
+.example-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-2 .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.example-2 .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.example-2 .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+.example-2 .icon-content a:hover {
+  color: white;
+}
+.example-2 .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover .filled {
+  height: 100%;
+}
+
+.example-2 .icon-content a[data-social="linkedin"] .filled,
+.example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+  background-color: #0274b3;
+}
+
+.example-2 .icon-content a[data-social="github"] .filled,
+.example-2 .icon-content a[data-social="github"] ~ .tooltip {
+  background-color: #24262a;
+}
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f
+  );
+}
+.example-2 .icon-content a[data-social="youtube"] .filled,
+.example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+  background-color: #ff0000;
+}
+
+ @keyframes softPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0px rgba(255,105,180,0.6); }
+    50% { transform: scale(1.05); box-shadow: 0 0 12px rgba(255,105,180,0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255,105,180,0.6); }
+  }
+
+  .animate-softPulse:active {
+    animation: softPulse 0.4s ease;
+  }
+
+.menu-container {
+  position: fixed;
+  top: 70px;
+  right: 230px;
+  background-color:gray-800;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  z-index: 40;
+}
