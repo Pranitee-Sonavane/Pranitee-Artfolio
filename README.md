@@ -1,7 +1,7 @@
 # 🎨 Pranitee's Artfolio  
 Welcome to my personal art gallery — a cozy little corner of the internet where I share my love for traditional art and thoughtful design. 💖
 
-🌐 **Live Site: https://pranitee-sonavane.github.io/Pranitee-Artfolio/ ** 
+🌐 **Live Site:https://pranitee-sonavane.github.io/Pranitee-Artfolio/**
 
 ---
 
